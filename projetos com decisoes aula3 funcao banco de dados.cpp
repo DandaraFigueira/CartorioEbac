@@ -100,6 +100,7 @@ int deletar()//deletar arquivo do banco de dados
 	
 	FILE *file;
 	file = fopen(cpf,"r");//abri o arquivo
+	fclose(file);
 	
 	if(file == NULL);
 	{
@@ -111,57 +112,71 @@ int deletar()//deletar arquivo do banco de dados
 
 
 int main()
-{
+	{
 	int opcao=0; //Definindo as variáveis
 	int laco=1;
+	char senhadigitada[]="a";
+	int comparacao;
 	
-	for(laco=1; laco=1;)
+	printf("### Cartório da EBAC ###\n\n");
+	printf("Login de administrador!\n\nDigite a sua senha: ");
+	scanf("%s",senhadigitada);
+	
+	comparacao = strcmp(senhadigitada, "admin");
+	
+	if(comparacao == 0)
 	{
 		
-		system("cls");
-		
-		setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
-	
-		printf("### Cartório da EBAC ### \n\n"); //inicio do menu
-		printf("Escolha a opção desejada do menu:\n");
-		printf("\t1 - Registrar nomes\n");
-		printf("\t2 - Consultar nomes\n");
-		printf("\t3 - Deletar nomes\n\n\n");
-		printf("\t4 - Sair do sistema\n\n.");
-		printf("Opção: ");//fim do menu
-	
-		scanf("%d", &opcao); //armanezamento a escolha do usuario
-									
-		system("cls");//responsavel por limpar a tela
-		
-		switch(opcao)//inicio da seleção do menu
+		for(laco=1;laco=1;)
 		{
-			case 1://chamada de funçoes
-			registro();
-			break;
-			
-			case 2:
-			consulta();
-			break;
-			
-			case 3:
-			deletar();
-			break;
-			
-			case 4:
-			printf("Obrigado por ultilizar o sistema!\n");
-			return 0;
-			break;
+		
+			system("cls");
+		
+			setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
+	
+			printf("### Cartório da EBAC ### \n\n"); //inicio do menu
+			printf("Escolha a opção desejada do menu:\n");
+			printf("\t1 - Registrar nomes\n");
+			printf("\t2 - Consultar nomes\n");
+			printf("\t3 - Deletar nomes\n\n\n");
+			printf("\t4 - Sair do sistema\n\n.");
+			printf("Opção: ");//fim do menu
+	
+			scanf("%d", &opcao); //armanezamento a escolha do usuario
 									
-			default:
-			printf("Essa opção não está disponivel!!\n");
-			system("pause");
-			break;	//fim da seleção
+			system("cls");//responsavel por limpar a tela
+		
+			switch(opcao)//inicio da seleção do menu
+			{
+				case 1://chamada de funçoes
+				registro();
+				break;
+			
+				case 2:
+				consulta();
+				break;
+			
+				case 3:
+				deletar();
+				break;
+			
+				case 4:
+				printf("Obrigado por ultilizar o sistema!\n");
+				return 0;
+				break;
+									
+				default:
+				printf("Essa opção não está disponivel!!\n");
+				system("pause");
+				break;	//fim da seleção
+			}
+	
+	
 		}
 	
-	
 	}
-	
+	else
+	printf("Senha incorreta!");
 	
 
 }
